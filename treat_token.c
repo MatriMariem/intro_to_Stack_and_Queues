@@ -7,7 +7,7 @@ void treat_token(stack_t **head, char *token)
 
 	if (!strncmp("push", token, 4))
 	{
-		if ((arg == check_push_arg(token)) != 0)
+		if ((arg = check_push_arg(token)) != 0)
 		{
 			push(head, line_number, arg);
 			return;
@@ -29,7 +29,7 @@ void (*get_function(char *token))(stack_t **, unsigned int)
 	int i;
 	instruction_t ops[] = {
 		{"pall", _pall},
-		{"pint", _pint},
+/*		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
@@ -44,6 +44,7 @@ void (*get_function(char *token))(stack_t **, unsigned int)
 		{"rotr", _rotr},
 		{"stack", _stack},
 		{"queue", _queue},
+*/
 		{NULL, NULL}
 	};
 
@@ -77,7 +78,3 @@ void get_invalid_opcode(char *token)
 	free(invalid_opcode);
 	exit(EXIT_FAILURE);
 }
-
-
-
-
