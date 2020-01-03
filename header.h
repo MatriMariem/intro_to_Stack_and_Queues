@@ -40,7 +40,7 @@ typedef struct instruction_s
 void push(stack_t **stack, unsigned int line_number, char *str);
 char *check_push_arg(char *token);
 
-void treat_line(stack_t **head, char *line, unsigned int line_number);
+void treat_line(stack_t **head, char *line);
 
 void treat_token(stack_t **head, char *token);
 void (*get_function(char *token))(stack_t **, unsigned int);
