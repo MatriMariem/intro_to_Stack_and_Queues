@@ -47,4 +47,6 @@ void (*get_function(char *token))(stack_t **, unsigned int);
 void get_invalid_opcode(char *token);
 
 void is_number(char *str);
+
+void get_usage_err(void);
 #endif

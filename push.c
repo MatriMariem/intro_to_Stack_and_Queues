@@ -2,9 +2,10 @@
 
 void push(stack_t **head, unsigned int line_number, char *arg)
 {
-	stack_t *h = *head, *new = NULL;
+	stack_t *new = NULL;
 	int num = atoi(arg);
 
+	free(arg);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -20,7 +21,10 @@ void push(stack_t **head, unsigned int line_number, char *arg)
 	}
 	else
 	{
-		
+		head->prev = new;
+		new->next = head;
+		new->prev = NULL;
+		*head = new;
 	}
 }
 
