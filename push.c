@@ -36,37 +36,39 @@ char *check_push_arg(char *token)
 		token2 = strtok(NULL, " \n");
 
 	if (!token2)
-	{
-		dprintf(STDERR_FILENO, "L%d: usage: push integer\n");
-		exit(EXIT_FAILURE);
-	}
+		get_usage_err();
 
 	for (len = 0; (token2[len] != '\n' && token2[len] != ' '); len++)
 		;
 	arg = malloc(sizeof(char) * (len + 1));
 	if (!arg)
-	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+		get_usage_err();
+
 	for (i = 0; i < len; i++)
 		arg[i] = token2[i];
 	arg[i] = '\0';
 
-	if (is_number(arg))
-		return (arg);
-	else
-	{
-		dprintf(STDERR_FILENO, "L%d: usage: push integer\n");
-		exit(EXIT_FAILURE);
-	}
+	is_number(arg);
+
+	return (arg);
 }
 
-int is_number(char *str)
+void get_usage_err(void)
 {
-	if (strlen(str) == 1 && (str[0] - 48 == 0))
-		return (1);
-	if (atoi(str) == 0)
-		return (0);
-	return (1);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+}
+
+void is_number(char *str)
+{
+	int i = 0;
+
+	while (str[i] != NULL)
+	{
+		if (str[i] >= 48 && str[i] <= 57)
+			i++;
+		else
+			get_usage_err();
+	}
+	return;
 }
