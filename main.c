@@ -8,6 +8,7 @@ int main(int ac, char **av)
 	char *line = NULL;
 	size_t size = 0;
 	ssize_t len;
+	stack_t *head;
 
 	if (ac != 2)
 	{
@@ -25,7 +26,7 @@ int main(int ac, char **av)
 	while ((len = getline(&line, &size, fp)) != -1)
 	{
 		line_number++;
-		treat_line(line, line_number);
+		treat_line(&head, line, line_number);
 	}
 
 	free(line);

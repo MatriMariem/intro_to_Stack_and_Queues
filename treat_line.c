@@ -1,6 +1,6 @@
 #include <header.h>
 
-void treat_line(char *line, unsigned int line_number)
+void treat_line(stack_t **head, char *line, unsigned int line_number)
 {
         char *token = NULL;
 
