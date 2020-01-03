@@ -17,9 +17,9 @@ extern unsigned int line_number;
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -32,13 +32,16 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 void push(stack_t **stack, unsigned int line_number, char *str);
+char *check_push_arg(char *token);
 
 void treat_line(stack_t **head, char *line, unsigned int line_number);
 
-void treat_token(char *token);
+void treat_token(stack_t **head, char *token);
+void (*get_function(char *token))(stack_t **, unsigned int);
+void get_invalid_opcode(char *token);
 #endif

@@ -7,7 +7,7 @@ void treat_token(stack_t **head, char *token)
 
 	if (!strncmp("push", token, 4))
 	{
-		if ((arg = check_push_arg(token)) != NULL)
+		if ((arg == check_push_arg(token)) != NULL)
 		{
 			push(head, line_number, arg);
 			return;
@@ -22,11 +22,10 @@ void treat_token(stack_t **head, char *token)
 	}
 
 	f(head, line_number);
-	return;
 }
 
 void (*get_function(char *token))(stack_t **, unsigned int)
-{	
+{
 	int i;
 	instruction_t ops[] = {
 		{"pall", _pall},
@@ -72,13 +71,11 @@ void get_invalid_opcode(char *token)
 	}
 	for (i = 0; i < len; i++)
 		invalid_opcode[i] = token[i];
-
-	dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line_number, invalid_opcode);
+	dprintf(STDERR_FILENO,
+			"L%d: unknown instruction %s\n",
+			line_number, invalid_opcode);
 	free(invalid_opcode);
 	exit(EXIT_FAILURE);
-
-
-
 }
 
 
