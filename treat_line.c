@@ -1,4 +1,4 @@
-#include <header.h>
+#include "header.h"
 
 void treat_line(stack_t **head, char *line, unsigned int line_number)
 {
@@ -9,5 +9,5 @@ void treat_line(stack_t **head, char *line, unsigned int line_number)
 		token = strtok(NULL, " \n");
 	if (!token)
 		return;
-	treat_token(token);
+	treat_token(head, token);
 }

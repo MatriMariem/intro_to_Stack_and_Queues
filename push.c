@@ -9,7 +9,8 @@ char *check_push_arg(char *token)
 {
 	char *token2;
 	char *arg;
-
+	int i, len;
+	
 	token2 = strtok(token, " \n");
 
 	while (token2 && token2[0] == ' ')

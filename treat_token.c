@@ -7,7 +7,7 @@ void treat_token(stack_t **head, char *token)
 
 	if (!strncmp("push", token, 4))
 	{
-		if ((arg == check_push_arg(token)) != NULL)
+		if ((arg == check_push_arg(token)) != 0)
 		{
 			push(head, line_number, arg);
 			return;
