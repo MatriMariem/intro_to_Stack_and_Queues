@@ -2,6 +2,7 @@
 
 void push(stack_t **head, unsigned int line_number, char *arg)
 {
+	(void)line_number;
 	stack_t *new = NULL;
 	int num = atoi(arg);
 
@@ -21,8 +22,8 @@ void push(stack_t **head, unsigned int line_number, char *arg)
 	}
 	else
 	{
-		head->prev = new;
-		new->next = head;
+		*head->prev = new;
+		new->next = *head;
 		new->prev = NULL;
 		*head = new;
 	}
@@ -67,7 +68,7 @@ void is_number(char *str)
 {
 	int i = 0;
 
-	while (str[i] != NULL)
+	while (str[i])
 	{
 		if (str[i] >= 48 && str[i] <= 57)
 			i++;

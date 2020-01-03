@@ -49,4 +49,6 @@ void get_invalid_opcode(char *token);
 void is_number(char *str);
 
 void get_usage_err(void);
+
+void pall(stack_t **head, unsigned int line_number);
 #endif
