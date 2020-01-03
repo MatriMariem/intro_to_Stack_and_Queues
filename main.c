@@ -22,13 +22,10 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
-	while ((len = getline(&line, &size, fp)) != -1) {
+	while ((len = getline(&line, &size, fp)) != -1)
+	{
 		line_number++;
-		printf(
-			"line_number %d =  %s\n",
-			line_number,
-			line
-	        );
+		treat_line(line, line_number);
 	}
 
 	free(line);
