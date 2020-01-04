@@ -1,6 +1,13 @@
 #include "header.h"
 
-void push(stack_t **head, unsigned int line_number, char *arg)
+/**
+ * _push - push new node to linked list.
+ * @head: linked list's head address.
+ * @line_number: the line number of the monty file that we're currently reading
+ * @arg: the push's corresponding arg.
+ * Return: nothing.
+ */
+void _push(stack_t **head, unsigned int line_number, char *arg)
 {
 	stack_t *new = NULL;
 	int num = atoi(arg);
@@ -30,6 +37,11 @@ void push(stack_t **head, unsigned int line_number, char *arg)
 	}
 }
 
+/**
+ * check_push_arg - check if a push command has an arg in its line.
+ * @token: token corresponding the push's line.
+ * Return: pointer to character representing the push's arg or NULL.
+ */
 char *check_push_arg(char *token)
 {
 	char *token2;
@@ -45,7 +57,9 @@ char *check_push_arg(char *token)
 
 	if (!token2)
 		get_usage_err();
-	for (len = 0; (token2[len] && token2[len] != '\n' && token2[len] != ' '); len++)
+	for (len = 0;
+	     (token2[len] && token2[len] != '\n' && token2[len] != ' ');
+	     len++)
 		;
 
 	arg = malloc(sizeof(char) * (len + 1));
@@ -62,12 +76,23 @@ char *check_push_arg(char *token)
 	return (arg);
 }
 
+/**
+ * get_usage_err - displays usage error.
+ */
 void get_usage_err(void)
 {
-		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+		dprintf(
+			STDERR_FILENO,
+			"L%d: usage: push integer\n",
+			line_number);
 		exit(EXIT_FAILURE);
 }
 
+/**
+ * is_number - check if the push argument is a number of not
+ * @str: the token that's retrieved after a found 'push' command.
+ * in a given line.
+ */
 void is_number(char *str)
 {
 	int i = 0;
@@ -79,5 +104,4 @@ void is_number(char *str)
 		else
 			get_usage_err();
 	}
-	return;
 }

@@ -2,6 +2,12 @@
 
 unsigned int line_number = 0;
 
+/**
+ * main - the main function.
+ * @ac: arguments number.
+ * @av: arguments vector.
+ * Return: int.
+ */
 int main(int ac, char **av)
 {
 	FILE *fp;

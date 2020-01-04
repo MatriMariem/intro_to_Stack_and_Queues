@@ -1,15 +1,24 @@
 #include "header.h"
 
+/**
+ * treat_token - function that treats a token.
+ * check if it's valid and has the necessary args
+ * or if it's invalid.
+ * @head: linked list's head address.
+ * @token: token to check.
+ * Return: nothing.
+ */
 void treat_token(stack_t **head, char *token)
 {
-	char *arg;
+	char *push_arg;
 	void (*f)(stack_t **head, unsigned int line_number);
 
 	if (!strncmp("push", token, 4))
 	{
-		if ((arg = check_push_arg(token)) != 0)
+		push_arg = check_push_arg(token);
+		if (push_arg != 0)
 		{
-			push(head, line_number, arg);
+			_push(head, line_number, push_arg);
 			return;
 		}
 	}
@@ -24,12 +33,19 @@ void treat_token(stack_t **head, char *token)
 	f(head, line_number);
 }
 
+/**
+ * get_function - returns the right function for the correponding function
+ * for the given token.
+ * @token: token to get its corresponding function.
+ * Return: the right function for the given token.
+ */
 void (*get_function(char *token))(stack_t **, unsigned int)
 {
 	int i;
 	instruction_t ops[] = {
 		{"pall", _pall},
-/*		{"pint", _pint},
+/*
+**		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
@@ -57,6 +73,12 @@ void (*get_function(char *token))(stack_t **, unsigned int)
 	return (NULL);
 }
 
+/**
+ * get_invalid_opcode - function to malloc invalid command and display
+ * its corresponding error.
+ * @token: invalid command (or opcode).
+ * Return: nothing.
+ */
 void get_invalid_opcode(char *token)
 {
 	int i, len;
