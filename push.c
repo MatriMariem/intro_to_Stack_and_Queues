@@ -2,9 +2,10 @@
 
 void push(stack_t **head, unsigned int line_number, char *arg)
 {
-	(void)line_number;
 	stack_t *new = NULL;
 	int num = atoi(arg);
+
+	(void)line_number;
 
 	free(arg);
 	new = malloc(sizeof(stack_t));
