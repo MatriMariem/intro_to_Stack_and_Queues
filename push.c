@@ -22,7 +22,7 @@ void push(stack_t **head, unsigned int line_number, char *arg)
 	}
 	else
 	{
-		*head->prev = new;
+		(*head)->prev = new;
 		new->next = *head;
 		new->prev = NULL;
 		*head = new;
