@@ -15,7 +15,7 @@ void push(stack_t **head, unsigned int line_number, char *arg)
 		exit(EXIT_FAILURE);
 	}
 	new->n = num;
-	if (*head == NULL)
+	if (head == NULL)
 	{
 		new->prev = NULL;
 		new->next = NULL;
@@ -46,12 +46,11 @@ char *check_push_arg(char *token)
 
 	if (!token2)
 		get_usage_err();
-	printf("BEFORE LOOP\n");
 	for (len = 0; (token2[len] && token2[len] != '\n' && token2[len] != ' '); len++)
 		;
-	printf("AFTER LOOP\n");
 
 	arg = malloc(sizeof(char) * (len + 1));
+
 	if (!arg)
 		get_usage_err();
 
