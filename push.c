@@ -39,7 +39,6 @@ char *check_push_arg(char *token)
 	(void)token;
 
 	token2 = strtok(NULL, " \n");
-	printf("TOKEN 2 = %s\n", token2);
 
 	while (token2 && token2[0] == ' ')
 		token2 = strtok(NULL, " \n");
