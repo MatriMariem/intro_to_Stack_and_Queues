@@ -15,7 +15,7 @@ void push(stack_t **head, unsigned int line_number, char *arg)
 		exit(EXIT_FAILURE);
 	}
 	new->n = num;
-	if (head == NULL)
+	if (*head == NULL)
 	{
 		new->prev = NULL;
 		new->next = NULL;
