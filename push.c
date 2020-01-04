@@ -46,9 +46,11 @@ char *check_push_arg(char *token)
 
 	if (!token2)
 		get_usage_err();
-
-	for (len = 0; (token2[len] != '\n' && token2[len] != ' '); len++)
+	printf("BEFORE LOOP\n");
+	for (len = 0; (token2[len] && token2[len] != '\n' && token2[len] != ' '); len++)
 		;
+	printf("AFTER LOOP\n");
+
 	arg = malloc(sizeof(char) * (len + 1));
 	if (!arg)
 		get_usage_err();
