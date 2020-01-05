@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
  * _push - push new node to linked list.
@@ -96,6 +96,11 @@ void get_usage_err(void)
 void is_number(char *str)
 {
 	int i = 0;
+
+	if (!(str[i] >= 48 && str[i] <= 57) && str[i] != '-')
+		get_usage_err();
+	else
+		i++;
 
 	while (str[i])
 	{

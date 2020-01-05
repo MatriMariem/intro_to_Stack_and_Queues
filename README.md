@@ -1,1 +1,2 @@
-preparation for Stack and Queues in C
+# monty
+monty interpreter using C programming language

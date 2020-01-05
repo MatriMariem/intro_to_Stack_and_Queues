@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
  * treat_token - function that treats a token.
@@ -13,7 +13,7 @@ void treat_token(stack_t **head, char *token)
 	char *push_arg;
 	void (*f)(stack_t **head, unsigned int line_number);
 
-	if (!strncmp("push", token, 4))
+	if (!strncmp("push", token, 4) && (token[4] == '\0'))
 	{
 		push_arg = check_push_arg(token);
 		if (push_arg != 0)
@@ -44,13 +44,14 @@ void (*get_function(char *token))(stack_t **, unsigned int)
 	int i;
 	instruction_t ops[] = {
 		{"pall", _pall},
-/*
-**		{"pint", _pint},
+		{"pint", _pint},
 		{"pop", _pop},
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
 		{"sub", _sub},
+/*
+**
 		{"div", _div},
 		{"mul", _mul},
 		{"mod", _mod},
@@ -66,7 +67,10 @@ void (*get_function(char *token))(stack_t **, unsigned int)
 
 	for (i = 0; ops[i].opcode; i++)
 	{
-		if (!strncmp(token, ops[i].opcode, strlen(ops[i].opcode)))
+		if (
+			!strncmp(token, ops[i].opcode, strlen(ops[i].opcode)) &&
+			(token[strlen(ops[i].opcode)] == '\0')
+			)
 			return (ops[i].f);
 	}
 

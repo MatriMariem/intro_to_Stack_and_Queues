@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
  * treat_line - function that gets the line from monty file and tokenize it

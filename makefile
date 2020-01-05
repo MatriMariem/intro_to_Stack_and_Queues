@@ -2,7 +2,7 @@
 CC = gcc
 
 #COMPILER_FLAGS specifies the additional compilation options we're using
-COMPILER_FLAGS = -Wall -Werror -pedantic
+COMPILER_FLAGS = -Wall -Werror -Wextra -pedantic
 
 #OBJS specifies which files to compile as part of the project
 OBJS = *.c
